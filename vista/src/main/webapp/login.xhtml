@@ -1,78 +1,70 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>SAUAP - Iniciar Sesión</title>
+    <h:outputStylesheet name="style.css" />
+</h:head>
+<h:body styleClass="login-page">
 
-    <h:head>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="style.css" rel="stylesheet" type="text/css"/>
-        <style>
-            
-            *{
-                text-align: center;
-            }
-            .center{
-                float: none;
-                margin: 0 auto;
-                
-            }
-            
-           
-            div.login{
-                position: absolute;
-                top:0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 35%;
-                width: 25%;
-                padding: 25px;
-                margin: auto;
-                background: white;
-                border-radius: 5px;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            }
-            .logo{
-                width: 150px;
-            }
-            .form-control:focus{
-                border-color:#007738;
-            }
-            .btn-success{
-                text-shadow: none;
-            }
-        </style>
-    </h:head>
+    <h:form id="loginForm">
 
-    <h:body>
-        <div class = "row">
-           
-            <h:form>
-               
-                <p:messages id="messages" showDetail="true" closable="true">
-                     
-                </p:messages>
-                <div class="login">
-                    <div class="panel-header">
-                        <p:graphicImage url="resources/uabcl.png" class="logo" />
-                    </div>
-                    <div class="panel-body">
-                        <div class=" form-group">
-                            <p:inputText class ="form-control" placeholder ="Correo:" autocomplete="false" value ="#{loginUI.usuario.correo}" />
-                        </div>
-                        <div class="form-group">
-                            <p:password class ="form-control" placeholder="Contraseña: " value="#{loginUI.usuario.contrasena}" />
-                        </div>
-                        <p:commandButton update="messages" class = "btn btn-success" value ="Iniciar sesion" actionListener ="#{loginUI.login()}" />
+        <div class="login-card">
 
-                    </div>
+            <div class="login-logo">
+                <span class="pi pi-graduation-cap logo-icon"></span>
+                <div class="logo-text">
+                    <span class="logo-title">SAUAP</span>
+                    <span class="logo-subtitle">ASIGNACIÓN DOCENTE INSTITUCIÓN.</span>
                 </div>
-                
-            </h:form>
-            
+            </div>
+
+            <h1 class="login-title">Iniciar Sesión</h1>
+
+            <p:messages id="mensajes" showDetail="true" closable="true" />
+
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <span class="p-input-icon-left field-full">
+                    <i class="pi pi-id-card" />
+                    <p:inputText id="usuario"
+                                 value="#{loginBeanUI.usuario}"
+                                 placeholder="Ej. user123"
+                                 styleClass="field-full" />
+                </span>
+            </div>
+
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="contrasenia">Contraseña</label>
+                    <h:outputLink value="#" styleClass="forgot-link">¿Olvidaste tu contraseña?</h:outputLink>
+                </div>
+                <span class="p-input-icon-left field-full">
+                    <i class="pi pi-lock" />
+                    <p:password id="contrasenia"
+                                value="#{loginBeanUI.contrasenia}"
+                                placeholder="••••••••••••"
+                                feedback="false"
+                                toggleMask="true"
+                                styleClass="field-full" />
+                </span>
+            </div>
+
+            <p:commandButton value="Entrar"
+                             icon="pi pi-arrow-right"
+                             iconPos="right"
+                             action="#{loginBeanUI.login}"
+                             styleClass="btn-entrar"
+                             ajax="true"
+                             update="mensajes" />
+
         </div>
-            
-    </h:body>
+
+        <div class="login-footer">© 2026 SAUAP</div>
+
+    </h:form>
+
+</h:body>
 </html>

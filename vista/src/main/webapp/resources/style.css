@@ -1,10 +1,263 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-
-.body{
-    background: black;
+body.login-page {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #eef5df 0%, #ffffff 60%);
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
+.login-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px 48px;
+    width: 360px;
+    text-align: center;
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.logo-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #222;
+}
+
+.logo-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: #888;
+}
+
+.login-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    color: #1a1a1a;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-link {
+    font-size: 12px;
+    color: #3f5a34;
+    text-decoration: none;
+}
+
+.field-full {
+    width: 100%;
+}
+
+.p-input-icon-left {
+    display: block;
+    margin-top: 6px;
+}
+
+.p-inputtext {
+    width: 100%;
+    border-radius: 10px !important;
+    padding: 10px 12px 10px 32px !important;
+    border: 1px solid #ddd !important;
+}
+
+.btn-entrar {
+    width: 100%;
+    background: #3f5a34 !important;
+    border-color: #3f5a34 !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    margin-top: 8px;
+}
+
+.btn-entrar:hover {
+    background: #33482a !important;
+}
+
+.login-footer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #999;
+}
+
+body.menu-page {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #eef5df 0%, #ffffff 60%);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 14px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-divider {
+    width: 1px;
+    height: 28px;
+    background: #ddd;
+}
+
+.header-app-title {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 0.3px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #888;
+}
+
+.logout-link {
+    font-size: 13px;
+    color: #3f5a34;
+    text-decoration: none;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.menu-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.menu-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+}
+
+.menu-subtitle {
+    font-size: 14px;
+    color: #666;
+    max-width: 520px;
+    margin: 0 auto 36px auto;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.menu-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon {
+    display: inline-block;
+    background: #eef5df;
+    color: #3f5a34;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: #777;
+    margin: 0 0 18px 0;
+}
+
+.card-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>SAUAP - Menú Principal</title>
+    <h:outputStylesheet name="style.css" />
+</h:head>
+<h:body styleClass="menu-page">
+
+    <div class="menu-header">
+        <div class="header-left">
+            <span class="pi pi-graduation-cap logo-icon"></span>
+            <div class="logo-text">
+                <span class="logo-title">SAUAP</span>
+                <span class="logo-subtitle">ASIGNACIÓN DOCENTE INSTITUCIÓN</span>
+            </div>
+            <span class="header-divider"></span>
+            <span class="header-app-title">SISTEMA DE ASIGNACIÓN DE UNIDADES DE APRENDIZAJE</span>
+        </div>
+
+        <h:form id="headerForm">
+            <div class="header-right">
+                <span class="pi pi-user user-icon"></span>
+                <div class="user-text">
+                    <span class="user-name">#{menuBeanUI.nombreUsuario}</span>
+                    <span class="user-role">#{menuBeanUI.rolUsuario}</span>
+                </div>
+                <p:commandLink action="#{menuBeanUI.cerrarSesion}" styleClass="logout-link">
+                    <i class="pi pi-sign-out" /> Cerrar sesión
+                </p:commandLink>
+            </div>
+        </h:form>
+    </div>
+
+    <div class="menu-body">
+
+        <h1 class="menu-title">Menú Principal</h1>
+        <p class="menu-subtitle">Seleccione el módulo que desea gestionar para continuar con las actividades académicas institucionales.</p>
+
+        <h:form id="menuForm">
+            <div class="menu-grid">
+
+                <div class="menu-card">
+                    <span class="pi pi-graduation-cap card-icon"></span>
+                    <h2 class="card-title">Profesores</h2>
+                    <p class="card-desc">Alta institucional, baja institucional de docentes de la institución.</p>
+                    <p:commandLink action="#{menuBeanUI.irAProfesores}" styleClass="card-link">
+                        Acceder al catálogo <i class="pi pi-arrow-right" />
+                    </p:commandLink>
+                </div>
+
+                <div class="menu-card">
+                    <span class="pi pi-book card-icon"></span>
+                    <h2 class="card-title">Unidades de Aprendizaje</h2>
+                    <p class="card-desc">Administración del catálogo de materias y sus horas.</p>
+                    <p:commandLink action="#{menuBeanUI.irAUnidadesAprendizaje}" styleClass="card-link">
+                        Administrar materias <i class="pi pi-arrow-right" />
+                    </p:commandLink>
+                </div>
+
+                <div class="menu-card">
+                    <span class="pi pi-calendar card-icon"></span>
+                    <h2 class="card-title">Asignaciones</h2>
+                    <p class="card-desc">Vinculación de materias a docentes y validación horaria sin traslapes.</p>
+                    <p:commandLink action="#{menuBeanUI.irAAsignaciones}" styleClass="card-link">
+                        Gestionar horarios <i class="pi pi-arrow-right" />
+                    </p:commandLink>
+                </div>
+
+                <div class="menu-card">
+                    <span class="pi pi-file card-icon"></span>
+                    <h2 class="card-title">Consultas</h2>
+                    <p class="card-desc">Consulta la carga académica de cada profesor.</p>
+                    <p:commandLink action="#{menuBeanUI.irAConsultas}" styleClass="card-link">
+                        Generar cédulas <i class="pi pi-arrow-right" />
+                    </p:commandLink>
+                </div>
+
+            </div>
+        </h:form>
+
+    </div>
+
+</h:body>
+</html>
