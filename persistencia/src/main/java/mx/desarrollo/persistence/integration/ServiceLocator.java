@@ -16,22 +16,24 @@ import mx.desarrollo.persistence.persistence.HibernateUtil;
  */
 public class ServiceLocator {
 
-    private static AlumnoDAO alumnoDAO;
+    private static ProfesorDAO ProfesorDAO;
     private static UsuarioDAO usuarioDAO;
+    private static AsignacionUnidadDAO asignacionUnidadDAO;
+    private static UnidadAprendizajeDAO unidadAprendizajeDAO;
 
     private static EntityManager getEntityManager(){
         return HibernateUtil.getEntityManager();
     }
 
     /**
-     * se crea la instancia para alumno DAO si esta no existe
+     * se crea la instancia para profesor DAO si esta no existe
      */
-    public static AlumnoDAO getInstanceAlumnoDAO(){
-        if(alumnoDAO == null){
-            alumnoDAO = new AlumnoDAO(getEntityManager());
-            return alumnoDAO;
+    public static ProfesorDAO getInstanceProfesorDAO(){
+        if(ProfesorDAO == null){
+            ProfesorDAO = new ProfesorDAO(getEntityManager());
+            return ProfesorDAO;
         } else{
-            return alumnoDAO;
+            return ProfesorDAO;
         }
     }
     /**
@@ -45,5 +47,29 @@ public class ServiceLocator {
             return usuarioDAO;
         }
     }
-    
+
+    /**
+     * se crea la instancia de asignacionUnidadDAO si esta no existe
+     */
+    public static AsignacionUnidadDAO getInstanceAsignacionUnidadDAO(){
+        if(asignacionUnidadDAO == null){
+            asignacionUnidadDAO = new AsignacionUnidadDAO(getEntityManager());
+            return asignacionUnidadDAO;
+        } else{
+            return asignacionUnidadDAO;
+        }
+    }
+
+    /**
+     * se crea la instancia de unidadAprendizajeDAO si esta no existe
+     */
+    public static UnidadAprendizajeDAO getInstanceUnidadAprendizajeDAO(){
+        if(unidadAprendizajeDAO == null){
+            unidadAprendizajeDAO = new UnidadAprendizajeDAO(getEntityManager());
+            return unidadAprendizajeDAO;
+        } else{
+            return unidadAprendizajeDAO;
+        }
+    }
+
 }

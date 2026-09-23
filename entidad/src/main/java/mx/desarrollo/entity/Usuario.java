@@ -7,40 +7,27 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idusuario", nullable = false)
-    private Integer id;
-
-    @Size(max = 45)
+    @Size(max = 50)
     @NotNull
-    @Column(name = "correo", nullable = false, length = 45)
-    private String correo;
+    @Column(name = "nombre_usuario", nullable = false, length = 50)
+    private String nombreUsuario;
 
-    @Size(max = 45)
+    @Size(max = 60)
     @NotNull
-    @Column(name = "contrasena", nullable = false, length = 45)
+    @Column(name = "contrasena", nullable = false, length = 60)
     private String contrasena;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idAlumno", nullable = false)
-    private Alumno idAlumno;
-
-    public Integer getId() {
-        return id;
+    public Usuario() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getContrasena() {
@@ -50,13 +37,4 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
-    public Alumno getIdAlumno() {
-        return idAlumno;
-    }
-
-    public void setIdAlumno(Alumno idAlumno) {
-        this.idAlumno = idAlumno;
-    }
-
 }

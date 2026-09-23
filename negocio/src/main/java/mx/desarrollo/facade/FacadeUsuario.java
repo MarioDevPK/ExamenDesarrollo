@@ -11,8 +11,8 @@ public class FacadeUsuario {
         this.delegateUsuario = new DelegateUsuario();
     }
 
-    public Usuario login(String password, String correo){
-        return delegateUsuario.login(password, correo);
+    public Usuario login(String nombreUsuario, String contrasena){
+        return delegateUsuario.login(nombreUsuario, contrasena);
     }
 
     public void saveUsario(Usuario usuario){

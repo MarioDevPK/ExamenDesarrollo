@@ -1,0 +1,310 @@
+body.ua-page {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #eef5df 0%, #ffffff 60%);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 14px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #222;
+}
+
+.logo-subtitle {
+    font-size: 8px;
+    letter-spacing: 0.4px;
+    color: #888;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #888;
+}
+
+.logout-link {
+    font-size: 13px;
+    color: #3f5a34;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.ua-body {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.volver-link {
+    font-size: 13px;
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.titulo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+}
+
+.page-subtitle {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.btn-agregar {
+    background: #3f5a34 !important;
+    border-color: #3f5a34 !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 10px 18px !important;
+    font-weight: 600 !important;
+}
+
+.ua-panel {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.ua-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ua-tabla th {
+    text-align: left;
+    font-size: 11px;
+    color: #999;
+    padding: 14px 20px;
+    font-weight: 600;
+    background: #f7faf0;
+}
+
+.ua-tabla td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #222;
+    border-top: 1px solid #f0f0f0;
+}
+
+.acciones-celda {
+    display: flex;
+    gap: 14px;
+}
+
+.accion-editar {
+    color: #999;
+    cursor: pointer;
+}
+
+.accion-eliminar {
+    color: #a83e3e;
+    cursor: pointer;
+}
+
+.ua-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+    padding: 16px 4px 0 4px;
+}
+
+.campo {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.campo-nombre {
+    position: relative;
+}
+
+.contador {
+    position: absolute;
+    right: 10px;
+    top: 36px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+.campo-full {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    border: 1px solid #ddd !important;
+}
+
+.campo-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.campo-spinner label {
+    margin-bottom: 0;
+}
+
+.max-nota {
+    font-size: 11px;
+    color: #aaa;
+    margin-left: 8px;
+}
+
+.botones-dialogo-h {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.botones-dialogo-h .btn-verde,
+.botones-dialogo-h .btn-cancelar {
+    flex: 1;
+}
+
+.botones-confirmar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn-verde {
+    background: #3f5a34 !important;
+    border-color: #3f5a34 !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+}
+
+.btn-rojo {
+    background: #a83e3e !important;
+    border-color: #a83e3e !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+}
+
+.btn-cancelar {
+    background: #ffffff !important;
+    border: 1px solid #ccc !important;
+    color: #444 !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+}
+
+.exito-contenido {
+    text-align: center;
+}
+
+.exito-texto {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.exito-icono {
+    display: inline-block;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.exito-verde {
+    background: #3f5a34;
+}
+
+.confirmar-texto {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 4px;
+}

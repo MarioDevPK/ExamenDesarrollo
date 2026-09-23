@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>SAUAP - Iniciar Sesión</title>
-    <h:outputStylesheet name="style.css" />
+    <h:outputStylesheet name="css/style.css" />
 </h:head>
 <h:body styleClass="login-page">
 
@@ -53,12 +53,12 @@
             </div>
 
             <p:commandButton value="Entrar"
-                             icon="pi pi-arrow-right"
-                             iconPos="right"
-                             action="#{loginBeanUI.login}"
-                             styleClass="btn-entrar"
-                             ajax="true"
-                             update="mensajes" />
+                              icon="pi pi-arrow-right"
+                              iconPos="right"
+                              action="#{loginBeanUI.login}"
+                              styleClass="btn-entrar"
+                              ajax="true"
+                              update="mensajes" />
 
         </div>
 

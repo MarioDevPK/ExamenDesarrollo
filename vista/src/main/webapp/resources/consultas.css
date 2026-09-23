@@ -1,0 +1,227 @@
+body.consultas-page {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #eef5df 0%, #ffffff 60%);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 14px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #222;
+}
+
+.logo-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.4px;
+    color: #888;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #888;
+}
+
+.logout-link {
+    font-size: 13px;
+    color: #3f5a34;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.consultas-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.volver-link {
+    font-size: 13px;
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 18px 0;
+}
+
+.busqueda-barra {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px;
+}
+
+.busqueda-icono {
+    color: #999;
+}
+
+.busqueda-input {
+    border: none !important;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+}
+
+.busqueda-resumen {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.profesor-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.profesor-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profesor-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iniciales {
+    background: #eef5df;
+    color: #3f5a34;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profesor-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.profesor-nombre {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.profesor-area {
+    font-size: 12px;
+    color: #888;
+}
+
+.badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.badge-verde {
+    background: #eaf3e2;
+    color: #3f5a34;
+}
+
+.badge-gris {
+    background: #ececec;
+    color: #888;
+}
+
+.asignaciones-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+}
+
+.asignaciones-tabla th {
+    text-align: left;
+    font-size: 10px;
+    color: #999;
+    padding: 8px 4px;
+    font-weight: 600;
+}
+
+.asignaciones-tabla td {
+    padding: 8px 4px;
+    font-size: 13px;
+    color: #333;
+    border-top: 1px solid #f2f2f2;
+}
