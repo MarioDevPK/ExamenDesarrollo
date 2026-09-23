@@ -1,50 +1,27 @@
 package mx.desarrollo.facade;
 
+import mx.desarrollo.delegate.DelegateProfesor;
 import mx.desarrollo.entity.Profesor;
-import mx.desarrollo.persistence.dao.ProfesorDAO;
-import mx.desarrollo.persistence.integration.ServiceLocator;
+
+import java.util.List;
 
 public class FacadeProfesor {
 
-    private final ProfesorDAO profesorDAO;
+    private final DelegateProfesor delegateProfesor;
 
     public FacadeProfesor() {
-        this.profesorDAO = ServiceLocator.getInstanceProfesorDAO();
+        this.delegateProfesor = new DelegateProfesor();
     }
 
     public boolean altaProfesor(Profesor profesor) {
-        if (!validarDatos(profesor)) {
-            return false;
-        }
-        profesorDAO.save(profesor);
-        return true;
+        return delegateProfesor.altaProfesor(profesor);
     }
 
     public boolean bajaProfesor(int idProfesor) {
-        return profesorDAO.find(idProfesor)
-                .map(profesor -> {
-                    profesorDAO.delete(profesor);
-                    return true;
-                })
-                .orElse(false);
+        return delegateProfesor.bajaProfesor(idProfesor);
     }
 
-    private boolean validarDatos(Profesor profesor) {
-        if (profesor == null) {
-            return false;
-        }
-        if (profesor.getNombreProfesor() == null || profesor.getNombreProfesor().isBlank()) {
-            return false;
-        }
-        if (profesor.getApellidoPaterno() == null || profesor.getApellidoPaterno().isBlank()) {
-            return false;
-        }
-        if (profesor.getApellidoMaterno() == null || profesor.getApellidoMaterno().isBlank()) {
-            return false;
-        }
-        if (profesor.getRfc() == null || profesor.getRfc().isBlank() || profesor.getRfc().length() > 13) {
-            return false;
-        }
-        return true;
+    public List<Profesor> consultarProfesoresConAsignaciones() {
+        return delegateProfesor.obtenerProfesoresConAsignaciones();
     }
 }
