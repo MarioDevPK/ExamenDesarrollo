@@ -15,7 +15,7 @@ public class Profesor {
 
     @NotNull
     @Size(max = 50)
-    @Column(name = "nombre_profesor", nullable = false, length = 50)
+    @Column(name = "nombre", nullable = false, length = 50) 
     private String nombreProfesor;
 
     @NotNull
