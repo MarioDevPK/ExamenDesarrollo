@@ -32,8 +32,9 @@ public class UnidadAprendizaje {
     @Column(name = "horas_laboratorio", nullable = false)
     private Integer horasLaboratorio;
 
-    @OneToMany(mappedBy = "idUnidad")
-    private Set<Asignacion> asignacions = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "idUnidad")    
+    private Set<AsignacionUnidad> asignacionUnidads = new LinkedHashSet<>();
+
 
     public Integer getId() {
         return id;
