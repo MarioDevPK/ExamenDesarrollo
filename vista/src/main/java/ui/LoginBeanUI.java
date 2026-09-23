@@ -5,6 +5,8 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import mx.desarrollo.entity.Usuario;
+import mx.desarrollo.integration.ServiceFacadeLocator;
 
 @Named
 @SessionScoped
@@ -29,8 +31,8 @@ public class LoginBeanUI implements Serializable {
     }
 
     private boolean validarConNegocio(String usuario, String contrasenia) {
-        // TODO: conectar con la capa de Negocio (ej. DelegateLogin.autenticar(...))
-        return false;
+        Usuario encontrado = ServiceFacadeLocator.getInstanceFacadeUsuario().login(usuario, contrasenia);
+        return encontrado != null;
     }
 
     public String getUsuario() {
