@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "profesor")
 public class Profesor {
@@ -15,7 +18,7 @@ public class Profesor {
 
     @NotNull
     @Size(max = 50)
-    @Column(name = "nombre", nullable = false, length = 50) 
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombreProfesor;
 
     @NotNull
@@ -32,6 +35,9 @@ public class Profesor {
     @Size(max = 13)
     @Column(name = "rfc", nullable = false, length = 13)
     private String rfc;
+
+    @OneToMany(mappedBy = "idProfesor")
+    private Set<AsignacionUnidad> asignacionUnidads = new LinkedHashSet<>();
 
     public Profesor() {
     }
@@ -74,5 +80,13 @@ public class Profesor {
 
     public void setRfc(String rfc) {
         this.rfc = rfc;
+    }
+
+    public Set<AsignacionUnidad> getAsignacionUnidads() {
+        return asignacionUnidads;
+    }
+
+    public void setAsignacionUnidads(Set<AsignacionUnidad> asignacionUnidads) {
+        this.asignacionUnidads = asignacionUnidads;
     }
 }
