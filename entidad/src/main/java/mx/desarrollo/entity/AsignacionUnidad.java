@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "asignacionUnidad")
+@Table(name = "asignacion")
 public class AsignacionUnidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
