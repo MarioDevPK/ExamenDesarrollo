@@ -43,7 +43,7 @@
         <h:form id="buscarForm">
             <div class="busqueda-barra">
                 <span class="pi pi-search busqueda-icono"></span>
-                <p:inputText value="#{consultasBeanUI.filtro}" placeholder="Buscar profesor, materia o aula..."
+                <p:inputText value="#{consultasBeanUI.filtro}" placeholder="Buscar profesor o materia..."
                              styleClass="busqueda-input" onkeyup="if(event.key==='Enter'){document.getElementById('buscarForm:btnBuscar').click();}" />
                 <p:commandButton id="btnBuscar" value="" style="display:none" update="listadoForm" />
                 <span class="busqueda-resumen">#{consultasBeanUI.totalDocentes} docentes • #{consultasBeanUI.totalHoras} hrs totales</span>
@@ -58,7 +58,7 @@
                             <span class="iniciales">#{prof.iniciales}</span>
                             <div class="profesor-texto">
                                 <span class="profesor-nombre">#{prof.nombreCompleto}</span>
-                                <span class="profesor-area">#{prof.area}</span>
+                                <span class="profesor-area">#{prof.rfc}</span>
                             </div>
                         </div>
                         <span class="badge #{prof.asignaciones.isEmpty() ? 'badge-gris' : 'badge-verde'}">
@@ -72,7 +72,6 @@
                             <tr>
                                 <th>MATERIA</th>
                                 <th>DÍAS Y HORARIO</th>
-                                <th>AULA</th>
                                 <th>HORAS</th>
                             </tr>
                         </thead>
@@ -81,7 +80,6 @@
                                 <tr>
                                     <td>#{asig.materia}</td>
                                     <td>#{asig.diasHorario}</td>
-                                    <td>#{asig.aula}</td>
                                     <td>#{asig.horas} hrs</td>
                                 </tr>
                             </ui:repeat>
