@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>SAUAP - Unidades de Aprendizaje</title>
+    <h:outputStylesheet name="unidadesAprendizaje.css" />
+</h:head>
+<h:body styleClass="ua-page">
+
+    <div class="menu-header">
+        <div class="header-left">
+            <span class="pi pi-graduation-cap logo-icon"></span>
+            <div class="logo-text">
+                <span class="logo-title">SAUAP</span>
+                <span class="logo-subtitle">ASIGNACIÓN DOCENTE INSTITUCIÓN</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-text">
+                <span class="user-name">#{unidadesBeanUI.nombreUsuario}</span>
+                <span class="user-role">#{unidadesBeanUI.rolUsuario}</span>
+            </div>
+            <span class="pi pi-user user-icon"></span>
+            <h:form id="headerForm">
+                <p:commandLink action="menu?faces-redirect=true" styleClass="logout-link">
+                    <i class="pi pi-sign-out" /> Cerrar sesión
+                </p:commandLink>
+            </h:form>
+        </div>
+    </div>
+
+    <div class="ua-body">
+
+        <h:form id="volverForm">
+            <p:commandLink action="menu?faces-redirect=true" styleClass="volver-link">
+                <i class="pi pi-arrow-left" /> Volver al menú
+            </p:commandLink>
+        </h:form>
+
+        <div class="titulo-row">
+            <div>
+                <h1 class="page-title">Unidades de Aprendizaje</h1>
+                <p class="page-subtitle">Catálogo de materias y horas curriculares</p>
+            </div>
+            <h:form id="agregarForm">
+                <p:commandButton value="Agregar unidad" icon="pi pi-plus" styleClass="btn-agregar"
+                                  onclick="PF('dlgUnidad').show()" type="button" />
+            </h:form>
+        </div>
+
+        <h:form id="tablaForm">
+            <div class="ua-panel">
+                <table class="ua-tabla">
+                    <thead>
+                        <tr>
+                            <th>NOMBRE DE LA MATERIA</th>
+                            <th>HORAS CLASE</th>
+                            <th>HORAS TALLER</th>
+                            <th>HORAS LAB.</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat value="#{unidadesBeanUI.unidades}" var="ua">
+                            <tr>
+                                <td>#{ua.nombre}</td>
+                                <td>#{ua.horasClase} hrs</td>
+                                <td>#{ua.horasTaller} hrs</td>
+                                <td>#{ua.horasLaboratorio} hrs</td>
+                                <td class="acciones-celda">
+                                    <p:commandLink actionListener="#{unidadesBeanUI.prepararEdicion(ua)}"
+                                                    update=":formUnidad" oncomplete="PF('dlgUnidad').show()">
+                                        <span class="pi pi-pencil accion-editar"></span>
+                                    </p:commandLink>
+                                    <p:commandLink actionListener="#{unidadesBeanUI.prepararEliminacion(ua)}"
+                                                    update=":formConfirmarEliminar" oncomplete="PF('dlgConfirmarEliminar').show()">
+                                        <span class="pi pi-trash accion-eliminar"></span>
+                                    </p:commandLink>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </h:form>
+
+        <div class="ua-footer">
+            <span>SAUAP • Sistema de Asignación de Unidades de Aprendizaje a Profesores</span>
+            <span>Ciclo Lectivo 2026-2</span>
+        </div>
+
+    </div>
+
+    <p:dialog widgetVar="dlgUnidad" header="#{unidadesBeanUI.tituloDialogo}" modal="true" width="460" closable="true" styleClass="dialogo-unidad">
+        <h:form id="formUnidad">
+            <div class="campo campo-nombre">
+                <label>Nombre:</label>
+                <p:inputText value="#{unidadesBeanUI.nombreForm}" maxlength="50" styleClass="campo-full" />
+                <span class="contador">#{unidadesBeanUI.nombreForm == null ? 0 : unidadesBeanUI.nombreForm.length()}/50</span>
+            </div>
+            <div class="campo campo-spinner">
+                <label>Hora de clases</label>
+                <p:inputNumber value="#{unidadesBeanUI.horasClaseForm}" decimalPlaces="0" min="0" max="4"
+                               showButtons="true" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" />
+                <span class="max-nota">(Máx. 4)</span>
+            </div>
+            <div class="campo campo-spinner">
+                <label>Hora de Taller</label>
+                <p:inputNumber value="#{unidadesBeanUI.horasTallerForm}" decimalPlaces="0" min="0" max="4"
+                               showButtons="true" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" />
+                <span class="max-nota">(Máx. 4)</span>
+            </div>
+            <div class="campo campo-spinner">
+                <label>hora de Laboratorio</label>
+                <p:inputNumber value="#{unidadesBeanUI.horasLaboratorioForm}" decimalPlaces="0" min="0" max="4"
+                               showButtons="true" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" />
+                <span class="max-nota">(Máx. 4)</span>
+            </div>
+
+            <p:message for="formUnidad" />
+
+            <div class="botones-dialogo-h">
+                <p:commandButton value="Cancelar" action="#{unidadesBeanUI.cancelarFormulario}" immediate="true"
+                                  process="@this" styleClass="btn-cancelar" oncomplete="PF('dlgUnidad').hide();" />
+                <p:commandButton value="Guardar" action="#{unidadesBeanUI.guardarUnidad}" styleClass="btn-verde"
+                                  update="formUnidad tablaForm"
+                                  oncomplete="if (!args.validationFailed) { PF('dlgUnidad').hide(); PF('dlgExitoGuardar').show(); }" />
+            </div>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgExitoGuardar" modal="true" width="300" closable="true" header="Unidad guardada" styleClass="dialogo-exito">
+        <div class="exito-contenido">
+            <p class="exito-texto">Unidad de aprendizaje guardada con éxito</p>
+            <span class="pi pi-check exito-icono exito-verde"></span>
+        </div>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgConfirmarEliminar" modal="true" width="300" closable="false" header="Confirmar eliminación" styleClass="dialogo-confirmar">
+        <h:form id="formConfirmarEliminar">
+            <p class="confirmar-texto">¿Eliminar esta unidad de aprendizaje?</p>
+            <p:message for="formConfirmarEliminar" />
+            <div class="botones-confirmar">
+                <p:commandButton value="Eliminar" action="#{unidadesBeanUI.confirmarEliminacion}" styleClass="btn-rojo"
+                                  update="formConfirmarEliminar tablaForm"
+                                  oncomplete="if (!args.validationFailed) { PF('dlgConfirmarEliminar').hide(); PF('dlgExitoEliminar').show(); }" />
+                <p:commandButton value="Cancelar" action="#{unidadesBeanUI.cancelarEliminacion}" immediate="true"
+                                  process="@this" styleClass="btn-verde" oncomplete="PF('dlgConfirmarEliminar').hide();" />
+            </div>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgExitoEliminar" modal="true" width="300" closable="true" header="Eliminación confirmada" styleClass="dialogo-exito">
+        <div class="exito-contenido">
+            <p class="exito-texto">Unidad eliminada con éxito</p>
+            <span class="pi pi-check-circle exito-icono exito-verde"></span>
+        </div>
+    </p:dialog>
+
+</h:body>
+</html>

@@ -24,8 +24,8 @@ public class Usuario {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idAlumno", nullable = false)
-    private Alumno idAlumno;
+    @JoinColumn(name = "idProfesor", nullable = false)
+    private Profesor idProfesor;
 
     public Integer getId() {
         return id;
@@ -51,12 +51,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public Alumno getIdAlumno() {
-        return idAlumno;
+    public Profesor getIdAlumno() {
+        return idProfesor;
     }
 
-    public void setIdAlumno(Alumno idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setIdAlumno(Profesor idProfesor) {
+        this.idProfesor = idProfesor;
     }
 
 }

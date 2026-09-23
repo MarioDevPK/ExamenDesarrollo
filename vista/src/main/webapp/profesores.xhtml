@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>SAUAP - Profesores</title>
+    <h:outputStylesheet name="profesores.css" />
+</h:head>
+<h:body styleClass="profesores-page">
+
+    <div class="menu-header">
+        <div class="header-left">
+            <span class="header-app-title">SISTEMA DE ASIGNACIÓN DE UNIDADES DE APRENDIZAJE</span>
+        </div>
+        <div class="header-right">
+            <span class="pi pi-user user-icon"></span>
+            <div class="user-text">
+                <span class="user-name">#{profesoresBeanUI.nombreUsuario}</span>
+                <span class="user-role">#{profesoresBeanUI.rolUsuario}</span>
+            </div>
+            <h:form id="headerForm">
+                <p:commandLink action="menu?faces-redirect=true" styleClass="logout-link">
+                    <i class="pi pi-sign-out" /> Cerrar sesión
+                </p:commandLink>
+            </h:form>
+        </div>
+    </div>
+
+    <div class="profesores-body">
+
+        <h1 class="page-title">Profesores</h1>
+        <p class="page-subtitle">Registrar o dar de baja profesores</p>
+
+        <h:form id="accionesForm">
+            <div class="acciones-grid">
+
+                <div class="accion-card" onclick="PF('dlgAlta').show()">
+                    <span class="pi pi-graduation-cap accion-icon"></span>
+                    <h2 class="accion-title">Registrar</h2>
+                    <p class="accion-desc">Alta institucional</p>
+                </div>
+
+                <div class="accion-card" onclick="PF('dlgBaja').show()">
+                    <span class="pi pi-user-minus accion-icon"></span>
+                    <h2 class="accion-title">Bajas</h2>
+                    <p class="accion-desc">Baja de profesores</p>
+                </div>
+
+            </div>
+        </h:form>
+
+        <h:form id="padronForm">
+            <div class="padron-panel">
+                <div class="padron-header">
+                    <span>PADRÓN DE DOCENTES REGISTRADOS</span>
+                    <span>#{profesoresBeanUI.profesores.size()} registros activos</span>
+                </div>
+                <table class="padron-tabla">
+                    <thead>
+                        <tr>
+                            <th>NOMBRE COMPLETO</th>
+                            <th>RFC</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ui:repeat value="#{profesoresBeanUI.profesores}" var="prof">
+                            <tr>
+                                <td>#{prof.nombreCompleto}</td>
+                                <td><span class="rfc-tag">#{prof.rfc}</span></td>
+                                <td>
+                                    <p:commandLink actionListener="#{profesoresBeanUI.prepararEdicion(prof)}"
+                                                    update=":formEditar"
+                                                    oncomplete="PF('dlgEditar').show()">
+                                        <span class="pi pi-pencil accion-editar"></span>
+                                    </p:commandLink>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </h:form>
+
+    </div>
+
+    <p:dialog widgetVar="dlgAlta" header="Altas" modal="true" width="420" closable="true" styleClass="dialogo-altas">
+        <h:form id="formAlta">
+            <div class="campo">
+                <label>Nombre</label>
+                <p:inputText value="#{profesoresBeanUI.nombreNuevo}" maxlength="50" placeholder="Emilio" styleClass="campo-full" />
+            </div>
+            <div class="campo">
+                <label>Apellido paterno</label>
+                <p:inputText value="#{profesoresBeanUI.apellidoPaternoNuevo}" maxlength="50" placeholder="Serrato" styleClass="campo-full" />
+            </div>
+            <div class="campo">
+                <label>Apellido materno</label>
+                <p:inputText value="#{profesoresBeanUI.apellidoMaternoNuevo}" maxlength="50" placeholder="Tafoya" styleClass="campo-full" />
+            </div>
+            <div class="campo">
+                <label>RFC</label>
+                <p:inputText value="#{profesoresBeanUI.rfcNuevo}" maxlength="13" placeholder="Ej. SET031116HBC" styleClass="campo-full">
+                    <f:validateRegex pattern="^[A-Za-zÑñ&amp;]{4}\d{6}[A-Za-z0-9]{3}$" />
+                </p:inputText>
+            </div>
+            <p:message for="formAlta" />
+
+            <div class="botones-dialogo">
+                <p:commandButton value="Registrar" action="#{profesoresBeanUI.registrarProfesor}" styleClass="btn-verde" update="formAlta padronForm" oncomplete="if (!args.validationFailed) { PF('dlgAlta').hide(); PF('dlgExitoAlta').show(); }" />
+                <p:commandButton value="Cancelar" action="#{profesoresBeanUI.cancelarAlta}" immediate="true" process="@this" styleClass="btn-cancelar" oncomplete="PF('dlgAlta').hide();" />
+            </div>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgExitoAlta" modal="true" width="300" closable="true" header="Mensaje Alta Confirmada" styleClass="dialogo-exito">
+        <div class="exito-contenido">
+            <p class="exito-texto">Profesor registrado con éxito</p>
+            <span class="pi pi-check exito-icono exito-verde"></span>
+        </div>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgBaja" header="Bajas" modal="true" width="420" closable="true" styleClass="dialogo-bajas">
+        <h:form id="formBaja">
+            <div class="campo">
+                <label>Profesor</label>
+                <p:selectOneMenu value="#{profesoresBeanUI.profesorSeleccionadoId}" styleClass="campo-full">
+                    <f:selectItem itemLabel="Seleccione un profesor" itemValue="" />
+                    <f:selectItems value="#{profesoresBeanUI.profesores}" var="prof" itemLabel="#{prof.nombreCompleto} - #{prof.rfc}" itemValue="#{prof.id}" />
+                </p:selectOneMenu>
+            </div>
+            <p:message for="formBaja" />
+
+            <div class="botones-dialogo">
+                <p:commandButton value="Dar de baja" action="#{profesoresBeanUI.solicitarBaja}" styleClass="btn-rojo" update="formBaja" oncomplete="if (!args.validationFailed) { PF('dlgBaja').hide(); PF('dlgConfirmarBaja').show(); }" />
+                <p:commandButton value="Cancelar" action="#{profesoresBeanUI.cancelarBaja}" immediate="true" process="@this" styleClass="btn-cancelar" oncomplete="PF('dlgBaja').hide();" />
+            </div>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgConfirmarBaja" modal="true" width="300" closable="false" header="Mensaje Confirmación Baja" styleClass="dialogo-confirmar">
+        <h:form id="formConfirmarBaja">
+            <p class="confirmar-texto">Confirmar baja</p>
+            <div class="botones-confirmar">
+                <p:commandButton value="Confirmar" action="#{profesoresBeanUI.confirmarBaja}" styleClass="btn-rojo campo-full" update="padronForm" oncomplete="PF('dlgConfirmarBaja').hide(); PF('dlgExitoBaja').show();" />
+                <p:commandButton value="Cancelar" action="#{profesoresBeanUI.cancelarBaja}" immediate="true" process="@this" styleClass="btn-verde campo-full" oncomplete="PF('dlgConfirmarBaja').hide();" />
+            </div>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgExitoBaja" modal="true" width="300" closable="true" header="Mensaje Baja Confirmada" styleClass="dialogo-exito">
+        <div class="exito-contenido">
+            <p class="exito-texto">Baja realizada con éxito</p>
+            <span class="pi pi-check-circle exito-icono exito-verde"></span>
+        </div>
+    </p:dialog>
+    <p:dialog widgetVar="dlgEditar" header="Editar profesor" modal="true" width="420" closable="true" styleClass="dialogo-altas">
+        <h:form id="formEditar">
+            <div class="campo">
+                <label>Nombre</label>
+                <p:inputText value="#{profesoresBeanUI.nombreEditar}" maxlength="50" styleClass="campo-full" />
+            </div>
+            <div class="campo">
+                <label>Apellido paterno</label>
+                <p:inputText value="#{profesoresBeanUI.apellidoPaternoEditar}" maxlength="50" styleClass="campo-full" />
+            </div>
+            <div class="campo">
+                <label>Apellido materno</label>
+                <p:inputText value="#{profesoresBeanUI.apellidoMaternoEditar}" maxlength="50" styleClass="campo-full" />
+            </div>
+            <div class="campo">
+                <label>RFC</label>
+                <p:inputText value="#{profesoresBeanUI.rfcEditar}" maxlength="13" styleClass="campo-full">
+                    <f:validateRegex pattern="^[A-Za-zÑñ&amp;]{4}\d{6}[A-Za-z0-9]{3}$" />
+                </p:inputText>
+            </div>
+            <p:message for="formEditar" />
+
+            <div class="botones-dialogo">
+                <p:commandButton value="Guardar cambios" action="#{profesoresBeanUI.guardarEdicion}" styleClass="btn-verde" update="formEditar padronForm" oncomplete="if (!args.validationFailed) { PF('dlgEditar').hide(); PF('dlgExitoEdicion').show(); }" />
+                <p:commandButton value="Cancelar" action="#{profesoresBeanUI.cancelarEdicion}" immediate="true" process="@this" styleClass="btn-cancelar" oncomplete="PF('dlgEditar').hide();" />
+            </div>
+        </h:form>
+    </p:dialog>
+
+    <p:dialog widgetVar="dlgExitoEdicion" modal="true" width="300" closable="true" header="Mensaje Edición Confirmada" styleClass="dialogo-exito">
+        <div class="exito-contenido">
+            <p class="exito-texto">Profesor actualizado con éxito</p>
+            <span class="pi pi-check exito-icono exito-verde"></span>
+        </div>
+    </p:dialog>
+
+</h:body>
+</html>

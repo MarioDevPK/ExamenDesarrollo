@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>SAUAP - Carga Académica Docente</title>
+    <h:outputStylesheet name="consultas.css" />
+</h:head>
+<h:body styleClass="consultas-page">
+
+    <div class="menu-header">
+        <div class="header-left">
+            <span class="pi pi-graduation-cap logo-icon"></span>
+            <div class="logo-text">
+                <span class="logo-title">SAUAP</span>
+                <span class="logo-subtitle">SISTEMA DE ASIGNACIÓN DOCENTE</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="pi pi-user user-icon"></span>
+            <div class="user-text">
+                <span class="user-name">#{consultasBeanUI.nombreUsuario}</span>
+                <span class="user-role">#{consultasBeanUI.rolUsuario}</span>
+            </div>
+            <h:form id="headerForm">
+                <p:commandLink action="menu?faces-redirect=true" styleClass="logout-link">Salir</p:commandLink>
+            </h:form>
+        </div>
+    </div>
+
+    <div class="consultas-body">
+
+        <h:form id="volverForm">
+            <p:commandLink action="menu?faces-redirect=true" styleClass="volver-link">
+                <i class="pi pi-arrow-left" /> Volver al menú
+            </p:commandLink>
+        </h:form>
+
+        <h1 class="page-title">Carga Académica Docente</h1>
+
+        <h:form id="buscarForm">
+            <div class="busqueda-barra">
+                <span class="pi pi-search busqueda-icono"></span>
+                <p:inputText value="#{consultasBeanUI.filtro}" placeholder="Buscar profesor, materia o aula..."
+                             styleClass="busqueda-input" onkeyup="if(event.key==='Enter'){document.getElementById('buscarForm:btnBuscar').click();}" />
+                <p:commandButton id="btnBuscar" value="" style="display:none" update="listadoForm" />
+                <span class="busqueda-resumen">#{consultasBeanUI.totalDocentes} docentes • #{consultasBeanUI.totalHoras} hrs totales</span>
+            </div>
+        </h:form>
+
+        <h:form id="listadoForm">
+            <ui:repeat value="#{consultasBeanUI.profesoresFiltrados}" var="prof">
+                <div class="profesor-card">
+                    <div class="profesor-cabecera">
+                        <div class="profesor-info">
+                            <span class="iniciales">#{prof.iniciales}</span>
+                            <div class="profesor-texto">
+                                <span class="profesor-nombre">#{prof.nombreCompleto}</span>
+                                <span class="profesor-area">#{prof.area}</span>
+                            </div>
+                        </div>
+                        <span class="badge #{prof.asignaciones.isEmpty() ? 'badge-gris' : 'badge-verde'}">
+                            #{prof.asignaciones.isEmpty() ? 'Sin asignaciones' : prof.horasSemana.concat(' hrs/sem')}
+                        </span>
+                    </div>
+
+                    <ui:fragment rendered="#{not prof.asignaciones.isEmpty()}">
+                    <table class="asignaciones-tabla">
+                        <thead>
+                            <tr>
+                                <th>MATERIA</th>
+                                <th>DÍAS Y HORARIO</th>
+                                <th>AULA</th>
+                                <th>HORAS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{prof.asignaciones}" var="asig">
+                                <tr>
+                                    <td>#{asig.materia}</td>
+                                    <td>#{asig.diasHorario}</td>
+                                    <td>#{asig.aula}</td>
+                                    <td>#{asig.horas} hrs</td>
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                    </ui:fragment>
+                </div>
+            </ui:repeat>
+        </h:form>
+
+    </div>
+
+</h:body>
+</html>

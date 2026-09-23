@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "asignacion")
-public class Asignacion {
+@Table(name = "asignacionUnidad")
+public class AsignacionUnidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_asignacion", nullable = false)

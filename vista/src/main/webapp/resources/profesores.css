@@ -1,0 +1,269 @@
+body.profesores-page {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #eef5df 0%, #ffffff 60%);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 14px 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-app-title {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 0.3px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-icon {
+    background: #3f5a34;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222;
+}
+
+.user-role {
+    font-size: 11px;
+    color: #888;
+}
+
+.logout-link {
+    font-size: 13px;
+    color: #3f5a34;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profesores-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 32px 0;
+}
+
+.acciones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 560px;
+    margin: 0 auto 32px auto;
+}
+
+.accion-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.accion-icon {
+    display: inline-block;
+    background: #eef5df;
+    color: #3f5a34;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.accion-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+}
+
+.accion-desc {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+.padron-panel {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.padron-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0.4px;
+    background: #f7faf0;
+}
+
+.padron-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.padron-tabla th {
+    text-align: left;
+    font-size: 11px;
+    color: #999;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.padron-tabla td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #222;
+    border-top: 1px solid #f0f0f0;
+}
+
+.rfc-tag {
+    background: #eef5df;
+    color: #3f5a34;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.accion-editar {
+    color: #999;
+    cursor: pointer;
+}
+
+.campo {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.campo-full {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    border: 1px solid #ddd !important;
+}
+
+.botones-dialogo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.botones-confirmar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn-verde {
+    background: #3f5a34 !important;
+    border-color: #3f5a34 !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    width: 100%;
+}
+
+.btn-rojo {
+    background: #a83e3e !important;
+    border-color: #a83e3e !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    width: 100%;
+}
+
+.btn-cancelar {
+    background: #ffffff !important;
+    border: 1px solid #ccc !important;
+    color: #444 !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    width: 100%;
+}
+
+.dialogo-exito .exito-contenido,
+.dialogo-confirmar {
+    text-align: center;
+    padding: 10px 6px;
+}
+
+.exito-texto {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.exito-icono {
+    display: inline-block;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 26px;
+    color: #ffffff;
+}
+
+.exito-verde {
+    background: #3f5a34;
+}
+
+.confirmar-texto {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
