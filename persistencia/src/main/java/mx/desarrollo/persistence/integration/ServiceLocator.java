@@ -18,6 +18,8 @@ public class ServiceLocator {
 
     private static ProfesorDAO ProfesorDAO;
     private static UsuarioDAO usuarioDAO;
+    private static AsignacionUnidadDAO asignacionUnidadDAO;
+    private static UnidadAprendizajeDAO unidadAprendizajeDAO;
 
     private static EntityManager getEntityManager(){
         return HibernateUtil.getEntityManager();
@@ -45,5 +47,29 @@ public class ServiceLocator {
             return usuarioDAO;
         }
     }
-    
+
+    /**
+     * se crea la instancia de asignacionUnidadDAO si esta no existe
+     */
+    public static AsignacionUnidadDAO getInstanceAsignacionUnidadDAO(){
+        if(asignacionUnidadDAO == null){
+            asignacionUnidadDAO = new AsignacionUnidadDAO(getEntityManager());
+            return asignacionUnidadDAO;
+        } else{
+            return asignacionUnidadDAO;
+        }
+    }
+
+    /**
+     * se crea la instancia de unidadAprendizajeDAO si esta no existe
+     */
+    public static UnidadAprendizajeDAO getInstanceUnidadAprendizajeDAO(){
+        if(unidadAprendizajeDAO == null){
+            unidadAprendizajeDAO = new UnidadAprendizajeDAO(getEntityManager());
+            return unidadAprendizajeDAO;
+        } else{
+            return unidadAprendizajeDAO;
+        }
+    }
+
 }
