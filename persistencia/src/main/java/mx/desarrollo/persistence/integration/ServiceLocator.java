@@ -16,7 +16,7 @@ import mx.desarrollo.persistence.persistence.HibernateUtil;
  */
 public class ServiceLocator {
 
-    private static AlumnoDAO alumnoDAO;
+    private static ProfesorDAO ProfesorDAO;
     private static UsuarioDAO usuarioDAO;
 
     private static EntityManager getEntityManager(){
@@ -24,14 +24,14 @@ public class ServiceLocator {
     }
 
     /**
-     * se crea la instancia para alumno DAO si esta no existe
+     * se crea la instancia para profesor DAO si esta no existe
      */
-    public static AlumnoDAO getInstanceAlumnoDAO(){
-        if(alumnoDAO == null){
-            alumnoDAO = new AlumnoDAO(getEntityManager());
-            return alumnoDAO;
+    public static ProfesorDAO getInstanceProfesorDAO(){
+        if(ProfesorDAO == null){
+            ProfesorDAO = new ProfesorDAO(getEntityManager());
+            return ProfesorDAO;
         } else{
-            return alumnoDAO;
+            return ProfesorDAO;
         }
     }
     /**

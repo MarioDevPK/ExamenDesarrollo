@@ -1,5 +1,3 @@
-import mx.desarrollo.entity.Alumno;
-import mx.desarrollo.persistence.dao.AlumnoDAO;
 import mx.desarrollo.persistence.persistence.HibernateUtil;
 
 public class testDAO {
